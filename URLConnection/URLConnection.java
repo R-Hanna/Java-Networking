@@ -1,30 +1,22 @@
 import java.net.*;
-import java.util.*;
+import java.io.*;
 
-public class NetworkInterface {
+public class URLConnection {
 
     public static void main(String[] args) {
+        String donnees;
         try {
-            NetworkInterfaceEx.getLocalNetworkInterface();
+            URL monURL = new URL("file:///home/devuser/Documents/File.txt");
+            URLConnection connexion = monURL.openConnection();
+            InputStream flux = connexion.getInputStream();
+            int donneesALire = connexion.getContentLength();
+            for (; donneesALire != 0; donneesALire--) {
+                System.out.println((char) flux.read());
+            }
+            flux.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void getLocalNetworkInterface() throws SocketException, NoClassDefFoundError {
-        Enumeration interfaces = NetworkInterface.getNetworkInterfaces();
-        while (interfaces.hasMoreElements()) {
-            NetworkInterface ni;
-            Enumeration adresses;
-            ni = (NetworkInterface) interfaces.nextElement();
-            System.out.println("Network interface : ");
-            System.out.println(" nom court = " + ni.getName());
-            System.out.println(" désignation = " + ni.getDisplayName());
-            adresses = ni.getInetAddresses();
-            while (adresses.hasMoreElements()) {
-                InetAddress ia = (InetAddress) adresses.nextElement();
-                System.out.println(" adresse I.P. = " + ia);
-            }
-        }
-    }
 }
