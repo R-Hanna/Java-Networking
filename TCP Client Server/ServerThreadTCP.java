@@ -2,10 +2,6 @@ import java.net.*;
 import java.io.*;
 import java.util.Date;
 
-/**
- *
- * @author devuser
- */
 public class ServerThreadTCP extends Thread { //Inherit from class Thread
 
     static int port = 9632;
@@ -14,7 +10,10 @@ public class ServerThreadTCP extends Thread { //Inherit from class Thread
 
     public static void main(String[] args) {
         try {
-            ServerSocket socketServer = new ServerSocket(port);    //Create new instance from ServerSocket
+            ServerSocket socketServer = new ServerSocket(port);
+            
+            //Create new instance from ServerSocket
+            
             System.out.println("STARTING THE SERVER" + '\n' + "WAITING FOR CONNECTIONS..." + '\n');
             while (true) {
                 Socket socketClient = socketServer.accept();
