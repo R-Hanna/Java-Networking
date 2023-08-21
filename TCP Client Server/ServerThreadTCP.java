@@ -15,6 +15,8 @@ public class ServerThreadTCP extends Thread { //Inherit from class Thread
             //Create new instance from ServerSocket
             
             System.out.println("STARTING THE SERVER" + '\n' + "WAITING FOR CONNECTIONS..." + '\n');
+            
+            // Listen for a connection
             while (true) {
                 Socket socketClient = socketServer.accept();
                 System.out.println("NEW CLIENT IS CONNECTED "
