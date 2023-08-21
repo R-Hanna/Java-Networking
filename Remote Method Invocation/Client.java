@@ -1,11 +1,12 @@
+
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
-
+import java.rmi.registry.Registry;
 
 public class Client {
 
     public static void main(String[] args) throws Exception {
-        LocateRegistry.getRegistry();
+        Registry registry = LocateRegistry.getRegistry();
         String host = "localhost";
         String url = "rmi://" + host + "/WelcomeInterface";
         WelcomeInterface remoteObject = (WelcomeInterface) Naming.lookup(url);
