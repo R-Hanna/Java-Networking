@@ -6,7 +6,8 @@ public class URLConnection {
     public static void main(String[] args) {
         String donnees;
         try {
-            URL monURL = new URL("file:///home/devuser/Documents/File.txt");
+            // Create new URL and pass the right path
+            URL monURL = new URL("file://Path/File.txt");
             URLConnection connexion = monURL.openConnection();
             InputStream flux = connexion.getInputStream();
             int donneesALire = connexion.getContentLength();
